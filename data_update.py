@@ -2,6 +2,7 @@ import database
 from sqlalchemy import insert
 import meteo_req
 import asyncio
+import config
 
 
 async def main():  # Функция для обновления базы
@@ -11,7 +12,7 @@ async def main():  # Функция для обновления базы
             request = insert(database.Msg).values(res)
             session.execute(request)
             session.commit()
-        await asyncio.sleep(180)  # Период обновления базы в секундах
+        await asyncio.sleep(config.delay)  # Период обновления базы в секундах
 
 
 if __name__ == '__main__':

@@ -1,14 +1,14 @@
 import xlsxwriter
 import asyncio
 import database
-from sqlalchemy import select
+from sqlalchemy import select, desc
 
 
 async def make_xlsx(name="meteo_output.xlsx", n=10):
     output_list = []
     with database.Session(autoflush=False, bind=database.engine) as session:
 
-        stmt = select(database.Msg).limit(n)  # получаем последние n записей
+        stmt = select(database.Msg).limit(n).order_by(desc(database.Msg.id))  # получаем последние n записей
         data = session.execute(stmt)
 
         for item in data:
