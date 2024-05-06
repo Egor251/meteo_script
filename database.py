@@ -3,7 +3,7 @@ from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 
-# строка подключения
+# Cтрока подключения
 sqlite_database = "sqlite:///main.db"
 
 engine = create_engine(sqlite_database)  # создаем движок SqlAlchemy
