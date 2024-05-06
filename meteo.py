@@ -42,7 +42,7 @@ async def read_input():
 
 
 async def main():  # Основная функция, обеспечивающая асинхронность
-    task = asyncio.create_task(read_input())
+    asyncio.create_task(read_input())
 
     await data_update.main()
 
