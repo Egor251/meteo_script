@@ -9,8 +9,8 @@ sqlite_database = "sqlite:///main.db"
 engine = create_engine(sqlite_database)  # создаем движок SqlAlchemy
 
 # Раскоментировать для использования postgres
-#postgres_database = "postgresql+psycopg2://admin:password@localhost/db"
-#engine = create_engine(postgres_database)
+# postgres_database = "postgresql+psycopg2://admin:password@localhost/db"
+# engine = create_engine(postgres_database)
 
 # создаем класс сессии
 Session = sessionmaker(autoflush=False, bind=engine)
@@ -25,14 +25,14 @@ class Base(DeclarativeBase):
 class Msg(Base):
     __tablename__ = "main"
     id = Column(Integer, primary_key=True)
-    temperature = Column(Float)
-    wind_speed = Column(Float)
-    wind_direction = Column(String)
-    weather = Column(String)
-    precipitation = Column(Float)
-    pressure = Column(Float)
+    temperature = Column(Float)  # Температура
+    wind_speed = Column(Float)  # Скорость ветра
+    wind_direction = Column(String)  # Направление ветра
+    weather = Column(String)  # Погода
+    precipitation = Column(Float)  # осадки
+    pressure = Column(Float)  # Давление
 
-    def get_list(self):
+    def get_list(self):  # Формируем список для удобного заполнение xlsx файла
         return [self.temperature, self.wind_direction, self.wind_speed, self.pressure, self.weather, self.precipitation]
 
 
