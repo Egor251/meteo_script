@@ -1,0 +1,4 @@
+openmeteo-requests
+sqlalchemy
+xlsxwriter
+aioconsole
